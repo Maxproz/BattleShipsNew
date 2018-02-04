@@ -13,6 +13,12 @@ class ABattleShipsNewGameMode : public AGameModeBase
 
 public:
 	ABattleShipsNewGameMode();
+
+
+	// NOTE: Not sure what I will use this for yet, or if I even ever will. 
+	// The gameplay gamemode and menu one are handled in their seperate folders and they are not inheriting from this one.
+
+
 };
 
 

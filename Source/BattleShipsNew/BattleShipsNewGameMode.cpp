@@ -14,4 +14,7 @@ ABattleShipsNewGameMode::ABattleShipsNewGameMode()
 
 	// use our custom HUD class
 	HUDClass = ABattleShipsNewHUD::StaticClass();
+
+
+
 }
