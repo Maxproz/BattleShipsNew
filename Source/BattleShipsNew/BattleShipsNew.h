@@ -5,7 +5,9 @@
 #include "CoreMinimal.h"
 
 
+// TODO: Look at the PlayerController and PlayerState from Fusion (the gameplay ones) and see if there is any code that you think you could use for battleship
 // TODO: Handle the notes/problems inside of the Gameplay/GameMode class 
+// TODO: Get a paper and somehow map the different state machines (Game Instance, GameMode, GameState) and how they are working together (if they even are)
 // TODO: Somehow find/create a mini map class of a battleship gameboard that the players commander will be holding.
 // TODO: Do I need a class dedicated to playing cutscenes/animations? whats the best way to handle it?
 // TODO: Should I handle the AI board setup in the AICommander class or in the gamemode?
@@ -14,3 +16,5 @@
 // And then place the ship onto the board with another mouseclick which will unpossess that ship.
 // Ideally when that pawn outline is placed on the gameboard the bigship should spawn in the arena???!??!?
 // TODO: Look at the notes I added in the game instance class and then try to hammer out some of those problems.
+// TODO: Important: As I start moving forward in completing the game, I need to polish the gameplay gamemode/gamestate by removing unnecessary code. 
+// As of right now its full of a lot of copy pasta multiplayer code that is useless for the battleship game we have in our mind now.
