@@ -14,6 +14,9 @@ class BATTLESHIPSNEW_API APlayerController_Gameplay : public ABattleShipMasterPl
 {
 	GENERATED_BODY()
 	
+protected:
+
+	virtual void BeginPlay() override;
 	
 public:
 	
@@ -24,5 +27,8 @@ public:
 
 	/** Ends and/or destroys game session */
 	void CleanupSessionOnReturnToMenu();
+
+	/** Returns a pointer to the game hud. May return NULL. */
+	FORCEINLINE class ABattleShipsNewHUD* GetPlayerHUD() const;
 
 };

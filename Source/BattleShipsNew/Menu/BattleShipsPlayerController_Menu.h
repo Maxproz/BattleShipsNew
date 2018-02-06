@@ -14,7 +14,17 @@ class BATTLESHIPSNEW_API ABattleShipsPlayerController_Menu : public ABattleShipM
 {
 	GENERATED_BODY()
 	
-	
-	
+private:
+
+	/** After game is initialized */
+	virtual void PostInitializeComponents() override;
+
+	virtual void BeginPlay() override;
+
+
+public:
+
+	/** Returns a pointer to the game hud. May return NULL. */
+	FORCEINLINE class ABattleShipsNewHUD* GetPlayerHUD() const;
 	
 };

@@ -7,6 +7,9 @@
 #include "BattleShipsNewHUD.generated.h"
 
 
+class UMainMenuWidget;
+
+
 // Probably will be using one HUD class to control all game widgets and just re-load the same one/widgets
 // when loading maps and menus and the specific player controller will control what widgets are shown.
 
@@ -46,11 +49,28 @@ public:
 		return EnumPtr->GetNameStringByValue((int64)EnumValue); // for EnumValue == VE_Dance returns "VE_Dance"
 	}
 
+	FORCEINLINE UMainMenuWidget* GetMainMenuWidget() const { return ActiveMainMenuWidget; }
+
+
+	void CreateGameWidgets();
+	void RemoveGameWidgets();
+
+	void ShowMainMenu();
+	void HideMainMenu();
+
 protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Enum)
 	EHUDStateEnum CurrentHUDState = EHUDStateEnum::HS_Error;
 
+
+	UPROPERTY(EditDefaultsOnly, Category = "Menu Widgets")
+	TAssetSubclassOf<UMainMenuWidget> MainMenuUIWidget;
+
+
+	UMainMenuWidget* ActiveMainMenuWidget;
+
+	void CreateMainMenuWidget();
 
 private:
 

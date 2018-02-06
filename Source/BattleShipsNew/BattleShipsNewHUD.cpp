@@ -7,6 +7,11 @@
 #include "CanvasItem.h"
 #include "UObject/ConstructorHelpers.h"
 
+#include "BattleShipsGameInstance.h"
+#include "Menu/BattleShipsPlayerController_Menu.h"
+
+#include "Widgets/Menu/MainMenuWidget.h"
+
 ABattleShipsNewHUD::ABattleShipsNewHUD()
 {
 	// Set the crosshair texture
@@ -33,3 +38,38 @@ void ABattleShipsNewHUD::DrawHUD()
 	TileItem.BlendMode = SE_BLEND_Translucent;
 	Canvas->DrawItem( TileItem );
 }
+
+void ABattleShipsNewHUD::CreateGameWidgets()
+{
+	CreateMainMenuWidget();
+
+	// TODO: Future widgets...
+
+}
+
+void ABattleShipsNewHUD::RemoveGameWidgets()
+{
+	// don't really need since they are usually destroyed at the ideal moments anyway...
+	// maybe it will be useful in the future.
+}
+
+
+
+void ABattleShipsNewHUD::CreateMainMenuWidget()
+{
+
+	ABattleShipsPlayerController_Menu* MPC = Cast<ABattleShipsPlayerController_Menu>(GetOwningPlayerController());
+	if (!MPC) return;
+
+	if (ActiveMainMenuWidget != nullptr) return;
+	ActiveMainMenuWidget = CreateWidget<UMainMenuWidget>(GetOwningPlayerController(), MainMenuUIWidget.LoadSynchronous());
+
+	// TODO: I see no reason to have a game instance ref variable... yet
+	// ActiveMainMenuWidget->GameInstanceRef = Cast<UBattleShipsGameInstance>(MPC->GetGameInstance());
+	ActiveMainMenuWidget->AddToViewport(0);
+	ActiveMainMenuWidget->SetVisibility(ESlateVisibility::Hidden);
+
+}
+
+void ABattleShipsNewHUD::ShowMainMenu() { GetMainMenuWidget()->ShowWidget(); }
+void ABattleShipsNewHUD::HideMainMenu() { GetMainMenuWidget()->HideWidget(); }
