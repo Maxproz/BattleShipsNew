@@ -109,14 +109,14 @@ public:
 
 private:
 
-	UPROPERTY(config)
-	FString WelcomeScreenMap;
+	//UPROPERTY(config)
+	//FString WelcomeScreenMap;
 
-	UPROPERTY(config)
+	UPROPERTY(config) // set inside of DefaultGameConfig
 	FString MainMenuMap;
 
-	UPROPERTY()
-	FName MainMenuMapp = "/Game/Tracked/Levels/FirstPersonExampleMap";
+	//UPROPERTY()
+	//FName MainMenuMapp = "/Game/Tracked/Levels/FirstPersonExampleMap";
 
 
 	FName CurrentState;
@@ -130,8 +130,9 @@ private:
 	/** Whether the user has an active license to play the game */
 	bool bIsLicensed;
 
-	///** Main menu UI */
-	TWeakObjectPtr<class UMainMenuWidget> MainMenuWidget;
+
+
+private:
 
 	///** Message menu (Shown in the even of errors - unable to connect etc) */
 	//TWeakObjectPtr<class UFusionMessageMenu_Widget> MessageMenuUI;
@@ -139,7 +140,8 @@ private:
 	////TSharedPtr<class SWidget> LobbyWidget;
 	//TWeakObjectPtr<class ULobbyMenu_Widget> LobbyWidget;
 
-
+	///** Main menu UI */
+	TWeakObjectPtr<class UMainMenuWidget> MainMenuWidget;
 
 
 	/** Delegate for callbacks to Tick */

@@ -203,7 +203,7 @@ void UBattleShipsGameInstance::ShowMessageThenGoMain(const FText& Message)
 
 void UBattleShipsGameInstance::GotoState(FName NewState)
 {
-	UE_LOG(LogCore, Fatal, TEXT("GotoState: NewState: %s"), *NewState.ToString());
+	UE_LOG(LogTemp, Warning, TEXT("GotoState: NewState: %s"), *NewState.ToString());
 
 	PendingState = NewState;
 }

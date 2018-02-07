@@ -347,19 +347,19 @@ void ABattleShipsGameMode_Gameplay::HandleMatchIsWaitingToStart()
 
 bool ABattleShipsGameMode_Gameplay::ReadyToStartMatch_Implementation()
 {
-	// If bDelayed Start is set, wait for a manual match start
-	if (bDelayedStart)
-	{
-		return false;
-	}
+	//// If bDelayed Start is set, wait for a manual match start
+	//if (bDelayedStart)
+	//{
+	//	return false;
+	//}
 
 	// By default start when we have > 0 players
 	if (GetMatchState() == MatchState::WaitingToStart)
 	{
-		if (NumPlayers + NumBots > 0)
-		{
+		//if (NumPlayers + NumBots > 0)
+		//{
 			return true;
-		}
+	/*	}*/
 	}
 	return false;
 }

@@ -94,6 +94,8 @@ protected:
 	virtual void HandleMatchIsWaitingToStart();
 
 	/** @return True if ready to Start Match. Games should override this */
+	// TODO: IMPORTANT: here we want to do a check for our battleship game mode, // all ships placed etc...
+	// Here we want to do a check
 	UFUNCTION(BlueprintNativeEvent, Category = "Game")
 	bool ReadyToStartMatch();
 
@@ -101,6 +103,7 @@ protected:
 	virtual void HandleMatchHasStarted();
 
 	/** @return true if ready to End Match. Games should override this */
+	// TODO: IMPORTANT: here we want to do a check for our battleship game mode, // all ships destroyed, player has seen stats, is prepared, knows whats happening etc..
 	UFUNCTION(BlueprintNativeEvent, Category = "Game")
 	bool ReadyToEndMatch();
 

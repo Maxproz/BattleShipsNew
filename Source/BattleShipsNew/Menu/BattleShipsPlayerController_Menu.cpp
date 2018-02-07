@@ -19,6 +19,14 @@ void ABattleShipsPlayerController_Menu::BeginPlay()
 		UBattleShipsGameInstance* BShipsGI = GetWorld() != NULL ? Cast<UBattleShipsGameInstance>(GetWorld()->GetGameInstance()) : NULL;
 		//FGI->GotoState(FusionGameInstanceState::MainMenu);
 
+		// When using play in editor the player is not sent to the main menu due to 
+		// how the lifecycles are different, have a backup here option here.
+		//if (GetWorld()->IsPlayInEditor())
+		//{
+		//	BShipsGI->MainMenuWidget = GetPlayerHUD()->GetMainMenuWidget();
+
+		//}
+
 		// When the game Instance starts it should already send us to the main menu state and since we are not using the messege menu state 
 		// The code below shouldn't be needed
 
