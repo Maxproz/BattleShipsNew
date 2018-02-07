@@ -41,13 +41,7 @@ public:
 	FORCEINLINE EHUDStateEnum GetCurrentHUDState() const { return CurrentHUDState; }
 	FORCEINLINE void SetCurrentHUDState(const EHUDStateEnum& InNewState) { CurrentHUDState = InNewState; }
 
-	FString GetHUDStateEnumAsString(uint8 EnumValue)
-	{
-		const UEnum* EnumPtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("EHUDStateEnum"), true);
-		if (!EnumPtr) return FString("Invalid");
-
-		return EnumPtr->GetNameStringByValue((int64)EnumValue); // for EnumValue == VE_Dance returns "VE_Dance"
-	}
+	FString GetHUDStateEnumAsString(uint8 EnumValue);
 
 	FORCEINLINE UMainMenuWidget* GetMainMenuWidget() const { return ActiveMainMenuWidget; }
 
@@ -65,7 +59,7 @@ protected:
 
 
 	UPROPERTY(EditDefaultsOnly, Category = "Menu Widgets")
-	TAssetSubclassOf<UMainMenuWidget> MainMenuUIWidget;
+	TAssetSubclassOf<UMainMenuWidget> MainMenuWidget;
 
 
 	UMainMenuWidget* ActiveMainMenuWidget;

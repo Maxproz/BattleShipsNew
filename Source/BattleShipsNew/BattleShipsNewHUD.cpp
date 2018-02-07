@@ -12,6 +12,8 @@
 
 #include "Widgets/Menu/MainMenuWidget.h"
 
+#include "Runtime/CoreUObject/Public/UObject/Package.h"
+
 ABattleShipsNewHUD::ABattleShipsNewHUD()
 {
 	// Set the crosshair texture
@@ -19,6 +21,13 @@ ABattleShipsNewHUD::ABattleShipsNewHUD()
 	CrosshairTex = CrosshairTexObj.Object;
 }
 
+FString ABattleShipsNewHUD::GetHUDStateEnumAsString(uint8 EnumValue)
+{
+	const UEnum* EnumPtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("EHUDStateEnum"), true);
+	if (!EnumPtr) return FString("Invalid");
+
+	return EnumPtr->GetNameStringByValue((int64)EnumValue); // for EnumValue == VE_Dance returns "VE_Dance"
+}
 
 void ABattleShipsNewHUD::DrawHUD()
 {
@@ -62,7 +71,7 @@ void ABattleShipsNewHUD::CreateMainMenuWidget()
 	if (!MPC) return;
 
 	if (ActiveMainMenuWidget != nullptr) return;
-	ActiveMainMenuWidget = CreateWidget<UMainMenuWidget>(GetOwningPlayerController(), MainMenuUIWidget.LoadSynchronous());
+	ActiveMainMenuWidget = CreateWidget<UMainMenuWidget>(GetOwningPlayerController(), MainMenuWidget.LoadSynchronous());
 
 	// TODO: I see no reason to have a game instance ref variable... yet
 	// ActiveMainMenuWidget->GameInstanceRef = Cast<UBattleShipsGameInstance>(MPC->GetGameInstance());
